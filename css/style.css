@@ -1,0 +1,117 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: #0d0054;
+    color: #333;
+  }
+  
+  /* Barra de navegación */
+  .navbar {
+    background: #0d0054;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar li {
+    margin: 0 15px;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  /* Banner principal */
+  .banner {
+    background: url('../img/banner.jpg') no-repeat center center/cover;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .banner h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .banner p {
+    font-size: 1.5rem;
+  }
+  
+  /* Secciones generales */
+  .destacados, .catalogo, .contacto, .nosotros {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Productos */
+  .productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .producto {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 300px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .producto img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Botón de WhatsApp */
+  .btn-whatsapp {
+    display: inline-block;
+    background: #25D366;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    margin-top: 15px;
+  }
+  
+  /* Footer */
+  footer {
+    background: #00096b;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+  }
+  
+  /* Diseño responsivo */
+  @media (max-width: 768px) {
+    .productos {
+      flex-direction: column;
+      align-items: center;
+    }
+    .navbar ul {
+      flex-direction: column;
+    }
+  }
+  
