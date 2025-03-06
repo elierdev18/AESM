@@ -8,13 +8,22 @@
   body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background: #0d0054;
-    color: #333;
-  }
+    background: url('../img/fondo_maquinas_ibague.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+}
+  .fondo-overlay {
+  background: rgba(255, 255, 255, 0); /* Fondo blanco semitransparente */
+  padding: 20px;
+  border-radius: 10px; /* Bordes redondeados */
+  max-width: 1600px;
+  margin: auto; /* Centra el contenido */
+}
+
   
   /* Barra de navegación */
   .navbar {
-    background: #0d0054;
+    background: #1401A8;
     color: #fff;
     padding: 10px;
   }
@@ -71,7 +80,7 @@
   }
   
   .producto {
-    background: #fff;
+    background: #04007a53;
     padding: 10px;
     border: 1px solid #ddd;
     width: 300px;
@@ -97,7 +106,7 @@
   
   /* Footer */
   footer {
-    background: #00096b;
+    background: #2c3ad2;
     color: #fff;
     text-align: center;
     padding: 15px;
@@ -114,4 +123,7 @@
       flex-direction: column;
     }
   }
-  
+  fondotitulo{
+    background-color: #1401A8;
+    padding: 80px;
+  }
