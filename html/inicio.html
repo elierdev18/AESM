@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de Máquinas de Coser</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css/inicio.css">
 </head>
 <body>
     <header>
@@ -13,9 +13,9 @@
             <ul>
                 <li><a href="../html/inicio.html">Inicio</a></li>
                 <li><a href="../html/productos.html">Productos</a></li>
-                <li><a href="../html/contacto.html">contacto</a></li>
-                <li><a href="../html/servicios.html">servicios</a></li>
-                <li><a href="../html/nosotros.html">nosotros</a></li>
+                <li><a href="../html/contacto.html">Contacto</a></li>
+                <li><a href="../html/servicios.html">Servicios</a></li>
+                <li><a href="../html/nosotros.html">Nosotros</a></li>
             </ul>
         </nav>
     </header>
@@ -27,25 +27,49 @@
     
     <section id="productos">
         <h2>Nuestros Productos</h2>
-        <div class="producto">
-            <h3>plana electronica</h3>
-            <img src="../imagenes/Kingter-KT-D7.jpeg" alt="plana Kingter-KT-D7">
-            <p>Alta calidad y rendimiento para profesionales.</p>
-        </div>
-        <div>
-          <h3>fileteadora 757 electronica</h3>
-          <img src="../imagenes/kingter757.webp" alt="kingter757">
-          <p>caracteristicas</p>
-        </div>
-        <div>
-          <h3>collarin</h3>
-          <img src="../imagenes/collarin kingter.webp" alt="collarin">
-          <p>caracteristicas</p>
+        <div class="productos-container">
+            <div class="producto">
+                <h3>Plana Electrónica</h3>
+                <img src="../img/Kingter-KT-D7.jpeg" alt="Plana Kingter-KT-D7">
+                <p>Alta calidad y rendimiento para profesionales.</p>
+            </div>
+            <div class="producto">
+                <h3>Fileteadora 757 Electrónica</h3>
+                <img src="../img/kingter757.webp" alt="Kingter 757">
+                <p>Características</p>
+            </div>
+            <div class="producto">
+                <h3>Collarín</h3>
+                <img src="../img/collarin kingter.webp" alt="Collarín">
+                <p>Características</p>
+            </div>
         </div>
     </section>
     
+    <section id="testimonios">
+        <h2>Testimonios</h2>
+        <div class="testimonio">
+            <p>"Las máquinas de coser de esta tienda son de excelente calidad. Estoy muy satisfecho con mi compra."</p>
+            <div class="autor">- Juan Pérez</div>
+        </div>
+        <div class="testimonio">
+            <p>"El servicio técnico es muy profesional y rápido. Recomiendo esta tienda a todos mis amigos."</p>
+            <div class="autor">- María García</div>
+        </div>
+    </section>
+    
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <form>
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="email" name="email" placeholder="Correo Electrónico" required>
+            <textarea name="mensaje" rows="5" placeholder="Mensaje" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+    
     <footer>
-        <p>&copy; 2025 maquinas ibague. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Máquinas Ibagué. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
