@@ -95,7 +95,7 @@ header {
 
 /* Banner principal */
 .banner {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1605379399642-870262d3d051');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../../Downloads/mantenimiento-esencial-para-tu-maquina-de-coser-2.jpg);
     background-size: cover;
     background-position: center;
     color: white;
@@ -243,7 +243,7 @@ header {
     margin-bottom: 1rem;
 }
 
-.cliente-foto {
+.cliente-foto-maria {
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -251,6 +251,38 @@ header {
     object-fit: cover;
     margin-bottom: 0.5rem;
     border: 3px solid #e74c3c;
+    background-image: url(../../../Downloads/shirly.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.cliente-foto-carlos {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #ddd;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    border: 3px solid #e74c3c;
+    background-image: url(../../../Downloads/guayaco.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.cliente-foto-laura {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #ddd;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    border: 3px solid #e74c3c;
+    background-image: url(../../../Downloads/doña\ marta.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
 }
 
 .estrellas {
@@ -261,7 +293,7 @@ header {
 
 /* Sección de contacto rápido */
 .contacto-rapido {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../../../Downloads/Singer_Argentina_0016_Hero-.jpg);
     background-size: cover;
     background-position: center;
     text-align: center;
