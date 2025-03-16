@@ -94,7 +94,7 @@ nav ul li a:hover::after {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/imagenes_de_fondo/—Pngtree—working\ mechanism\ of\ vintage\ sewing_15693240.png');
     background-size: cover;
     background-position: center;
     height: 80vh;
@@ -133,6 +133,7 @@ nav ul li a:hover::after {
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
+    margin-top: 15px;
 }
 
 .btn:hover {
@@ -552,5 +553,6 @@ footer {
 /* Trust badges */
 .trust-badge {
     display: inline-block;
-    padding: 8;
+    margin-right: 15px;
+    word-spacing: 3px;
 }
