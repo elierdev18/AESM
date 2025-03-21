@@ -105,7 +105,7 @@ header {
 
 /* Banner principal */
 .banner {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../../Downloads/mantenimiento-esencial-para-tu-maquina-de-coser-2.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/mantenimiento-esencial-para-tu-maquina-de-coser-2.jpg);
     background-size: cover;
     background-position: center;
     color: var(--color-white);
@@ -261,7 +261,7 @@ header {
     object-fit: cover;
     margin-bottom: 0.5rem;
     border: 3px solid var(--color-salmon);
-    background-image: url(../../../Downloads/shirly.jpg);
+    background-image: url(../img/shirly.jpg);
     background-size: cover;
     background-position: center;
     border-radius: 50%;
@@ -275,7 +275,7 @@ header {
     object-fit: cover;
     margin-bottom: 0.5rem;
     border: 3px solid var(--color-salmon);
-    background-image: url(../../../Downloads/guayaco.jpg);
+    background-image: url(../img/guayaco.jpg);
     background-size: cover;
     background-position: center;
     border-radius: 50%;
@@ -289,7 +289,7 @@ header {
     object-fit: cover;
     margin-bottom: 0.5rem;
     border: 3px solid var(--color-salmon);
-    background-image: url(../../../Downloads/doña\ marta.jpg);
+    background-image: url(../img/doña\ marta.jpg);
     background-size: cover;
     background-position: center;
     border-radius: 50%;
@@ -303,7 +303,7 @@ header {
 
 /* Sección de contacto rápido */
 .contacto-rapido {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../../../Downloads/Singer_Argentina_0016_Hero-.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/Singer_Argentina_0016_Hero-.jpg);
     background-size: cover;
     background-position: center;
     text-align: center;
