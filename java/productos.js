@@ -65,7 +65,7 @@ const products = [
       const btn = document.createElement('button');
       btn.textContent = i;
       if (i === currentPage) {
-        btn.style.backgroundColor = '#0056b3';
+        btn.style.backgroundColor = 'gray';
       }
       btn.addEventListener('click', () => {
         currentPage = i;
