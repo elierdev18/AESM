@@ -228,6 +228,12 @@ header {
     background-color: var(--color-white);
 }
 
+.muñeco{
+    position: relative;
+    right: 50%;
+    
+}
+
 .testimonios-container {
     display: flex;
     gap: 2rem;
