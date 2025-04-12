@@ -128,19 +128,7 @@ nav ul li a:hover::after {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: var(--color-salmon);
-    color: var(--color-white);
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    margin-top: 15px;
-}
+
 
 .btn:hover {
     background-color: var(--color-salmon-dark);
@@ -287,10 +275,7 @@ nav ul li a:hover::after {
     margin-bottom: 15px;
 }
 
-.btn-sm {
-    padding: 8px 20px;
-    font-size: 0.9rem;
-}
+
 
 /* Sección de Testimonios */
 .testimonials {
