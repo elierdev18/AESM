@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página de Productos</title>
+  <link rel="stylesheet" href="../css/productos.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+        <div class="logo">
+            
+            <div class="logo-text">Máquinas Ibagué</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="inicio.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+  <div class="container">
+    <!-- Barra lateral: Categorías y filtros -->
+    <div class="sidebar">
+      <h2>Categorías</h2>
+      <ul>
+        <li><a href="#" data-category="todos" class="active">Máquinas y Repuestos</a></li>
+      </ul>
+      <div class="filter-section">
+        <h3>Filtros</h3>
+        <label for="price-range">Rango de precio</label>
+        <input type="range" id="price-range" min="0" max="1000" value="1000">
+        <span id="price-value">1000</span>
+        <label for="brand-select">Marca</label>
+        <select id="brand-select">
+          <option value="todos">Todas</option>
+          <option value="marcaA">Kingter</option>
+          <option value="marcaB">Jontex</option>
+          <option value="marcaC">Jinthex</option>
+        </select>
+        <button id="apply-filters" style="margin-top:15px;">Aplicar filtros</button>
+      </div>
+    </div>
+
+    <!-- Contenido principal: Tarjetas de productos y paginación -->
+    <div class="main-content">
+      <div class="product-grid" id="product-grid">
+        <!-- Aquí se cargarán las tarjetas de productos -->
+      </div>
+      <ul class="pagination" id="pagination">
+        <!-- Aquí se generará la paginación -->
+      </ul>
+    </div>
+  </div>
+  <script src="../java/productos.js"></script>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h4>Máquinas Ibagué</h4>
+            <p>Somos una empresa dedicada a la venta y servicio técnico de máquinas de coser industriales y domésticas con más de 7 años de experiencia.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Enlaces Rápidos</h4>
+            <ul>
+                <li><a href="inicio.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Productos</h4>
+            <ul>
+                <li><a href="#">Máquinas Planas</a></li>
+                <li><a href="#">Fileteadoras</a></li>
+                <li><a href="#">Collarines</a></li>
+                <li><a href="#">Bordadoras</a></li>
+                <li><a href="#">Repuestos</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contacto</h4>
+            <ul>
+                <li><a href="tel:+573001234567">+57 3133848472</a></li>
+                <li><a href="mailto:info@maquinasibague.com"> maquinasibague81@gmail.com</a></li>
+                <li><a href="#">CL 14 #4-19, Ibagué</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Máquinas Ibagué. Todos los derechos reservados.</p>
+    </div>
+</footer>
+</body>
+</html>
