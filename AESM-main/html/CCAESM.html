@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito de Compras</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: var(--fuente-principal, "Helvetica Neue", Arial, sans-serif);
+      background-color: var(--fondo, #ffffff);
+      color: var(--color-principal, #333);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ======================================
+       Estilos para los Productos
+    ========================================== */
+    .producto {
+      display: inline-block;
+      border: 1px solid var(--borde-color, #e0e0e0);
+      border-radius: 5px;
+      padding: 15px;
+      margin: 15px;
+      max-width: 220px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .producto img {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin: 0 auto 10px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+    
+    .producto h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+    
+    .producto p {
+      margin: 0 0 15px;
+      font-size: 1rem;
+    }
+    
+    .agregar {
+      background-color: var(--boton-color, #007bff);
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .agregar:hover {
+      background-color: var(--boton-hover, #0056b3);
+    }
+
+    /* ======================================
+       Estilos para el Carrito
+    ========================================== */
+    #carrito {
+      margin: 20px auto;
+      max-width: 800px;
+      background-color: var(--fondo-secundario, #f8f9fa);
+      padding: 20px;
+      border: 1px solid var(--borde-color, #e0e0e0);
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    #carrito h2 {
+      font-size: 1.8rem;
+      color: var(--color-principal, #333);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    #listaCarrito {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #listaCarrito li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--borde-color, #e0e0e0);
+    }
+    
+    #listaCarrito li:last-child {
+      border-bottom: none;
+    }
+    
+    #listaCarrito button {
+      background-color: var(--boton-color, #007bff);
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    #listaCarrito button:hover {
+      background-color: var(--boton-hover, #0056b3);
+    }
+    
+    /* ======================================
+       Estilos Responsivos
+    ========================================== */
+    @media (max-width: 768px) {
+      .producto {
+        max-width: 90%;
+        width: 90%;
+      }
+      
+      #carrito {
+        width: 90%;
+        padding: 15px;
+      }
+      
+      #listaCarrito li {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      #listaCarrito button {
+        margin-top: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sección de productos con imagen, nombre, precio y botón para agregar -->
+  <section id="productos">
+    <div class="producto" data-id="1" data-nombre="Producto 1" data-precio="19.99">
+      <img src="../img/cort 8' kingter.jpeg" alt="Producto 1">
+      <h3>Producto 1</h3>
+      <p>Precio: $19.99</p>
+      <button class="agregar">Agregar al carrito</button>
+    </div>
+    <div class="producto" data-id="2" data-nombre="Producto 2" data-precio="29.99">
+      <img src="../img/cort 4' kingter.jpeg" alt="Producto 2">
+      <h3>Producto 2</h3>
+      <p>Precio: $29.99</p>
+      <button class="agregar">Agregar al carrito</button>
+    </div>
+    <div class="producto" data-id="1" data-nombre="Producto 3" data-precio="19.99">
+        <img src="../img/cort 8' kingter.jpeg" alt="Producto 1">
+        <h3>Producto 1</h3>
+        <p>Precio: $19.99</p>
+        <button class="agregar">Agregar al carrito</button>
+      </div>
+      <div class="producto" data-id="2" data-nombre="Producto 4" data-precio="29.99">
+        <img src="../img/cort 4' kingter.jpeg" alt="Producto 2">
+        <h3>Producto 2</h3>
+        <p>Precio: $29.99</p>
+        <button class="agregar">Agregar al carrito</button>
+      </div>
+      <div class="producto" data-id="1" data-nombre="Producto 5" data-precio="19.99">
+        <img src="../img/cort 8' kingter.jpeg" alt="Producto 1">
+        <h3>Producto 1</h3>
+        <p>Precio: $19.99</p>
+        <button class="agregar">Agregar al carrito</button>
+      </div>
+      <div class="producto" data-id="2" data-nombre="Producto 6" data-precio="29.99">
+        <img src="../img/cort 4' kingter.jpeg" alt="Producto 2">
+        <h3>Producto 2</h3>
+        <p>Precio: $29.99</p>
+        <button class="agregar">Agregar al carrito</button>
+      </div>
+      <div class="producto" data-id="1" data-nombre="Producto 7" data-precio="19.99">
+        <img src="../img/cort 8' kingter.jpeg" alt="Producto 1">
+        <h3>Producto 1</h3>
+        <p>Precio: $19.99</p>
+        <button class="agregar">Agregar al carrito</button>
+      </div>
+      <div class="producto" data-id="2" data-nombre="Producto 8" data-precio="29.99">
+        <img src="../img/cort 4' kingter.jpeg" alt="Producto 2">
+        <h3>Producto 2</h3>
+        <p>Precio: $29.99</p>
+        <button class="agregar">Agregar al carrito</button>
+      </div>
+      <div class="producto" data-id="2" data-nombre="Producto 9" data-precio="29.99">
+        <img src="../img/cort 4' kingter.jpeg" alt="Producto 2">
+        <h3>Producto 2</h3>
+        <p>Precio: $29.99</p>
+        <button class="agregar">Agregar al carrito</button>
+      </div>
+    <!-- Puedes agregar más productos siguiendo el mismo formato -->
+  </section>
+
+  <!-- Sección del Carrito -->
+  <section id="carrito">
+    <h2>Carrito de Compras</h2>
+    <ul id="listaCarrito">
+      <!-- Los productos se agregarán dinámicamente aquí -->
+    </ul>
+  </section>
+
+  <script src="../java/CCAESM.js"></script>
+</body>
+</html>

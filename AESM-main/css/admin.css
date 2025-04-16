@@ -1,0 +1,211 @@
+/* admin.css */
+:root {
+    --color-salmon: #FA8072;
+    --color-salmon-light: #FFA07A;
+    --color-salmon-dark: #E9967A;
+    --color-gray: #808080;
+    --color-gray-light: #D3D3D3;
+    --color-gray-dark: #696969;
+    --color-white: #FFFFFF;
+    --color-delete: #dc3545; /* Rojo para eliminar */
+    --color-delete-dark: #c82333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--color-gray-light);
+    color: var(--color-gray-dark);
+    line-height: 1.6;
+}
+
+/* Header simple para admin */
+.admin-header {
+    background-color: var(--color-gray-dark);
+    color: var(--color-white);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.admin-header .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.admin-header .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.admin-header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.admin-header nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.admin-header nav a {
+    color: var(--color-white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.admin-header nav a:hover {
+    color: var(--color-salmon);
+}
+
+/* Contenedor principal */
+.admin-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.admin-section {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--color-gray-light);
+}
+
+.admin-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.admin-section h2 {
+    color: var(--color-salmon);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--color-salmon-light);
+    padding-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+/* Estilos del formulario */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--color-gray-dark);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="url"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-gray-light);
+    border-radius: 4px;
+    box-sizing: border-box; /* Importante para que el padding no aumente el ancho */
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-salmon);
+    box-shadow: 0 0 5px var(--color-salmon-light);
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-add {
+    background-color: var(--color-salmon);
+    color: var(--color-white);
+}
+
+.btn-add:hover {
+    background-color: var(--color-salmon-dark);
+}
+
+.btn-delete {
+    background-color: var(--color-delete);
+    color: var(--color-white);
+    font-size: 0.9rem; /* Un poco más pequeño */
+    padding: 5px 10px;
+}
+
+.btn-delete:hover {
+    background-color: var(--color-delete-dark);
+}
+
+/* Estilos de la lista de productos */
+#product-list-container {
+    margin-top: 20px;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    border-bottom: 1px solid var(--color-gray-light);
+    gap: 15px; /* Espacio entre elementos */
+}
+
+.product-item:last-child {
+    border-bottom: none;
+}
+
+.product-item-info {
+    flex-grow: 1; /* Ocupa el espacio disponible */
+}
+
+.product-item-info span {
+    display: inline-block; /* Para que margin funcione bien */
+    margin-right: 15px;
+}
+.product-item-info .name {
+    font-weight: bold;
+}
+.product-item-info .price {
+    color: var(--color-salmon);
+}
+
+.product-item-actions {
+    flex-shrink: 0; /* Evita que se encoja */
+}
+
+/* Footer simple */
+.admin-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: var(--color-gray);
+    font-size: 0.9rem;
+}
