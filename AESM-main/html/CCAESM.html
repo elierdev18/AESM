@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Carrito de Compras</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../css/CCAESM.css">
   <style>
     /* Estilos generales */
     body {
       font-family: var(--fuente-principal, "Helvetica Neue", Arial, sans-serif);
-      background-color: var(--fondo, #ffffff);
+      background-color: var(--fondo, #fff0e9);
       color: var(--color-principal, #333);
       margin: 0;
       padding: 0;
@@ -19,13 +19,13 @@
     ========================================== */
     .producto {
       display: inline-block;
-      border: 1px solid var(--borde-color, #e0e0e0);
+      border: 1px solid var(--borde-color, #ffffff);
       border-radius: 5px;
       padding: 15px;
       margin: 15px;
       max-width: 220px;
       text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgb(244, 104, 104);
     }
     
     .producto img {
@@ -49,8 +49,8 @@
     }
     
     .agregar {
-      background-color: var(--boton-color, #007bff);
-      color: #fff;
+      background-color: var(--boton-color, #FA8072);
+      color: #000000;
       border: none;
       padding: 8px 12px;
       border-radius: 3px;
@@ -59,7 +59,7 @@
     }
     
     .agregar:hover {
-      background-color: var(--boton-hover, #0056b3);
+      background-color: var(--boton-hover, #ffffff);
     }
 
     /* ======================================
@@ -68,7 +68,7 @@
     #carrito {
       margin: 20px auto;
       max-width: 800px;
-      background-color: var(--fondo-secundario, #f8f9fa);
+      background-color: var(--fondo-secundario, #FA8072);
       padding: 20px;
       border: 1px solid var(--borde-color, #e0e0e0);
       border-radius: 5px;
@@ -101,8 +101,8 @@
     }
     
     #listaCarrito button {
-      background-color: var(--boton-color, #007bff);
-      color: #fff;
+      background-color: var(--boton-color, #ffffff);
+      color: #000000;
       border: none;
       padding: 8px 12px;
       border-radius: 3px;
@@ -111,7 +111,7 @@
     }
     
     #listaCarrito button:hover {
-      background-color: var(--boton-hover, #0056b3);
+      background-color: var(--boton-hover, #3295fe);
     }
     
     /* ======================================
@@ -143,56 +143,56 @@
   <!-- Sección de productos con imagen, nombre, precio y botón para agregar -->
   <section id="productos">
     <div class="producto" data-id="1" data-nombre="Producto 1" data-precio="19.99">
-      <img src="../img/cort 8' kingter.jpeg" alt="Producto 1">
-      <h3>Producto 1</h3>
-      <p>Precio: $19.99</p>
+      <img src="../img/plana ktd3.jpeg" alt="Producto 1">
+      <h3>Plana mecatronica kingter</h3>
+      <p>Precio: $1,390.000</p>
       <button class="agregar">Agregar al carrito</button>
     </div>
     <div class="producto" data-id="2" data-nombre="Producto 2" data-precio="29.99">
-      <img src="../img/cort 4' kingter.jpeg" alt="Producto 2">
-      <h3>Producto 2</h3>
+      <img src="../img/kingter757.webp" alt="Producto 2">
+      <h3>filete 757 kingter</h3>
       <p>Precio: $29.99</p>
       <button class="agregar">Agregar al carrito</button>
     </div>
-    <div class="producto" data-id="1" data-nombre="Producto 3" data-precio="19.99">
-        <img src="../img/cort 8' kingter.jpeg" alt="Producto 1">
-        <h3>Producto 1</h3>
+    <div class="producto" data-id="3" data-nombre="Producto 3" data-precio="19.99">
+        <img src="../img/cort 8' kingter.jpeg" alt="Producto 4">
+        <h3>collarin electronica kingter</h3>
         <p>Precio: $19.99</p>
         <button class="agregar">Agregar al carrito</button>
       </div>
-      <div class="producto" data-id="2" data-nombre="Producto 4" data-precio="29.99">
-        <img src="../img/cort 4' kingter.jpeg" alt="Producto 2">
-        <h3>Producto 2</h3>
+      <div class="producto" data-id="4" data-nombre="Producto 4" data-precio="29.99">
+        <img src="../img/cort 4' kingter.jpeg" alt="Producto 5">
+        <h3>plana electronica jontex</h3>
         <p>Precio: $29.99</p>
         <button class="agregar">Agregar al carrito</button>
       </div>
-      <div class="producto" data-id="1" data-nombre="Producto 5" data-precio="19.99">
-        <img src="../img/cort 8' kingter.jpeg" alt="Producto 1">
-        <h3>Producto 1</h3>
+      <div class="producto" data-id="5" data-nombre="Producto 5" data-precio="19.99">
+        <img src="../img/cort 8' kingter.jpeg" alt="Producto 5">
+        <h3>filete electronica jontex</h3>
         <p>Precio: $19.99</p>
         <button class="agregar">Agregar al carrito</button>
       </div>
-      <div class="producto" data-id="2" data-nombre="Producto 6" data-precio="29.99">
-        <img src="../img/cort 4' kingter.jpeg" alt="Producto 2">
-        <h3>Producto 2</h3>
+      <div class="producto" data-id="6" data-nombre="Producto 6" data-precio="29.99">
+        <img src="../img/cort 4' kingter.jpeg" alt="Producto 6">
+        <h3>collarin electronica jontex</h3>
         <p>Precio: $29.99</p>
         <button class="agregar">Agregar al carrito</button>
       </div>
-      <div class="producto" data-id="1" data-nombre="Producto 7" data-precio="19.99">
-        <img src="../img/cort 8' kingter.jpeg" alt="Producto 1">
-        <h3>Producto 1</h3>
+      <div class="producto" data-id="7" data-nombre="Producto 7" data-precio="19.99">
+        <img src="../img/cort 8' kingter.jpeg" alt="Producto 7">
+        <h3>Plana electronica jinthex</h3>
         <p>Precio: $19.99</p>
         <button class="agregar">Agregar al carrito</button>
       </div>
-      <div class="producto" data-id="2" data-nombre="Producto 8" data-precio="29.99">
-        <img src="../img/cort 4' kingter.jpeg" alt="Producto 2">
-        <h3>Producto 2</h3>
+      <div class="producto" data-id="8" data-nombre="Producto 8" data-precio="29.99">
+        <img src="../img/cort 4' kingter.jpeg" alt="Producto 8">
+        <h3>filete electronica jinthex</h3>
         <p>Precio: $29.99</p>
         <button class="agregar">Agregar al carrito</button>
       </div>
-      <div class="producto" data-id="2" data-nombre="Producto 9" data-precio="29.99">
-        <img src="../img/cort 4' kingter.jpeg" alt="Producto 2">
-        <h3>Producto 2</h3>
+      <div class="producto" data-id="9" data-nombre="Producto 9" data-precio="29.99">
+        <img src="../img/cort 4' kingter.jpeg" alt="Producto 9">
+        <h3>collarin electronica jinthex</h3>
         <p>Precio: $29.99</p>
         <button class="agregar">Agregar al carrito</button>
       </div>
@@ -208,5 +208,43 @@
   </section>
 
   <script src="../java/CCAESM.js"></script>
+
+  <footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h4>Máquinas Ibagué</h4>
+            <p>Somos una empresa dedicada a la venta y servicio técnico de máquinas de coser industriales y domésticas con más de 7 años de experiencia.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Enlaces Rápidos</h4>
+            <ul>
+                <li><a href="inicio.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Productos</h4>
+            <ul>
+                <li><a href="#">Máquinas Planas</a></li>
+                <li><a href="#">Fileteadoras</a></li>
+                <li><a href="#">Collarines</a></li>
+                <li><a href="#">Bordadoras</a></li>
+                <li><a href="#">Repuestos</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contacto</h4>
+            <ul>
+                <li><a href="tel:+573001234567">+57 3133848472</a></li>
+                <li><a href="mailto:info@maquinasibague.com"> maquinasibague81@gmail.com</a></li>
+                <li><a href="#">CL 14 #4-19, Ibagué</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Máquinas Ibagué. Todos los derechos reservados.</p>
+    </div>
+</footer>
 </body>
 </html>
