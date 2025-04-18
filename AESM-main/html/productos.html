@@ -5,94 +5,147 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Página de Productos</title>
   <link rel="stylesheet" href="../css/productos.css">
+  <script src="../java/jquery.js"></script>
+  <script src="../java/productos.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="header-container">
-        <div class="logo">
-            
-            <div class="logo-text">Máquinas Ibagué</div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="inicio.html">Inicio</a></li>
-                <li><a href="productos.html">Productos</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-  <div class="container">
-    <!-- Barra lateral: Categorías y filtros -->
-    <div class="sidebar">
-      <h2>Categorías</h2>
-      <ul>
-        <li><a href="#" data-category="todos" class="active">Máquinas y Repuestos</a></li>
-      </ul>
-      <div class="filter-section">
-        <h3>Filtros</h3>
-        <label for="price-range">Rango de precio</label>
-        <input type="range" id="price-range" min="0" max="1000" value="1000">
-        <span id="price-value">1000</span>
-        <label for="brand-select">Marca</label>
-        <select id="brand-select">
-          <option value="todos">Todas</option>
-          <option value="marcaA">Kingter</option>
-          <option value="marcaB">Jontex</option>
-          <option value="marcaC">Jinthex</option>
-        </select>
-        <button id="apply-filters" style="margin-top:15px;">Aplicar filtros</button>
-      </div>
-    </div>
 
-    <!-- Contenido principal: Tarjetas de productos y paginación -->
-    <div class="main-content">
-      <div class="product-grid" id="product-grid">
-        <!-- Aquí se cargarán las tarjetas de productos -->
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/573133848472" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <header class="encabezado">
+    <div class="logo">
+        <h1>Maquinas Ibagué</h1>
+    </div>
+    
+    <nav class="navbar">
+        <ul>
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="servicios.html" class="active">Servicios</a></li>
+        </ul>
+        
+    </nav>
+</header>
+
+  <header>
+    <div class="wrap">
+      <div class="store-wrapper">
+        <div class="category-list">
+          <a href="#" class="category_Items" category="all">Todos</a>
+          <a href="#" class="category_Items" category="maquinas">Maquinas</a>
+          <a href="#" class="category_Items" category="repuestos">Repuestos</a>
+          <a href="#" class="category_Items" category="Productos">Productos</a>
+          <!-- Modifica el HTML de filtro de precios -->
+<div class="price-filter">
+  <h3>Filtrar por precio</h3>
+  <div class="price-range">
+      <div class="range-inputs">
+          <input type="range" id="minPrice" class="price-slider" min="0" max="1000" value="0">
+          <input type="range" id="maxPrice" class="price-slider" min="0" max="1000" value="1000">
       </div>
-      <ul class="pagination" id="pagination">
-        <!-- Aquí se generará la paginación -->
-      </ul>
-    </div>
+      <div class="price-values">
+          <span id="minValue">$0</span>
+          <span id="maxValue">$1000</span>
+      </div>
   </div>
-  <script src="../java/productos.js"></script>
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-        <div class="footer-col">
-            <h4>Máquinas Ibagué</h4>
-            <p>Somos una empresa dedicada a la venta y servicio técnico de máquinas de coser industriales y domésticas con más de 7 años de experiencia.</p>
+</div>
         </div>
-        <div class="footer-col">
-            <h4>Enlaces Rápidos</h4>
-            <ul>
-                <li><a href="inicio.html">Inicio</a></li>
-                <li><a href="productos.html">Productos</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Productos</h4>
-            <ul>
-                <li><a href="#">Máquinas Planas</a></li>
-                <li><a href="#">Fileteadoras</a></li>
-                <li><a href="#">Collarines</a></li>
-                <li><a href="#">Bordadoras</a></li>
-                <li><a href="#">Repuestos</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Contacto</h4>
-            <ul>
-                <li><a href="tel:+573001234567">+57 3133848472</a></li>
-                <li><a href="mailto:info@maquinasibague.com"> maquinasibague81@gmail.com</a></li>
-                <li><a href="#">CL 14 #4-19, Ibagué</a></li>
-            </ul>
-        </div>
+        <section class="product-list">
+          <div class="product-item" category="Maquinas">
+            <img src="../img/imagenes_productos_1/plana electronica jontex jt-610.jpg" alt="">
+            <a href="#">jontex plana electronica</a>
+          </div>
+          <div class="product-item" category="Maquinas">
+            <img src="../img/imagenes_productos_1/collarin jontex.jpg" alt="">
+            <a href="#">collarin jontex</a>
+          </div>
+          <div class="product-item" category="Maquinas">
+            <img src="../img/imagenes_productos_1/cort 4' kingter.jpg" alt="">
+            <a href="#">kingter cort 4'
+            </a>
+          </div>
+          <div class="product-item" category="Maquinas">
+            <img src="../img/imagenes_productos_1/cort 8' kingter.jpg" alt="">
+            <a href="#">kingter cort 8</a>
+          </div>
+          <div class="product-item" category="Productos">
+            <img src="../img/imagenes_productos_1/cort banana.jpg" alt="">
+            <a href="#">banana cort</a>
+          </div>
+          <div class="product-item" category="Productos">
+            <img src="../img/imagenes_productos_1/ebanador de hilos.jpg" alt="">
+            <a href="#">ebanador de hilos</a>
+          </div>
+          <div class="product-item" category="Maquinas">
+            <img src="../img/imagenes_productos_1/fileteadora jontex jt-766.jpg" alt="">
+            <a href="#">jontex fileteadora</a>
+          </div>
+          <div class="product-item" category="Maquinas">
+            <img src="../img/imagenes_productos_1/Kingter-KT-D7.jpg" alt="">
+            <a href="#">kingter fileteadora d7</a>
+          </div>
+          <div class="product-item" category="Maquinas">
+            <img src="../img/imagenes_productos_1/kingter757.jpg" alt="">
+            <a href="#">kingter fileteadora 757</a>
+          </div>
+          <div class="product-item" category="Maquinas">
+            <img src="../img/imagenes_productos_1/maquina familiar kingter.jpg" alt="">
+            <a href="#">kingter maquina familiar</a>
+          </div>
+          <div class="product-item" category="repuestos">
+            <img src="../img/imagenes_productos_1/motor ahorrado.jpg" alt="">
+            <a href="#">motor ahorrado</a>
+          </div>
+          <div class="product-item" category="maquinas">
+            <img src="../img/imagenes_productos_1/plana ktd3.jpg" alt="">
+            <a href="#">plana ktd3</a>
+          </div>
+          <div class="product-item" category="maquinas">
+            <img src="../img/imagenes_productos_1/planaktd7-4.jpg" alt="">
+            <a href="#">plana ktd7-4</a>
+          </div>
+          <div class="product-item" category="maquinas">
+            <img src="../img/imagenes_productos_1/plancha industrial.jpg" alt="">
+            <a href="#">plana industrial</a>
+          </div>
+          <div class="product-item" category="Productos">
+            <img src="../img/imagenes_productos_1/soplador y aspirador jinthex.jpg" alt="">
+            <a href="#">jinthex soplador y aspirador</a>
+          </div>
+        </section>
+      </div>
+      <div class="pagination"></div>
     </div>
-    <div class="footer-bottom">
-        <p>&copy; 2025 Máquinas Ibagué. Todos los derechos reservados.</p>
-    </div>
-</footer>
+    <footer>
+      <div class="footer-content">
+          <div class="footer-section">
+              <h3>Maquinas Ibagué</h3>
+              <p>Expertos en reparación y mantenimiento de máquinas de coser desde 2022.</p>
+          </div>
+          
+          <div class="footer-section">
+              <h3>Contacto</h3>
+              <p><i class="fas fa-map-marker-alt"></i> CL 14 #4-19</p>
+              <p><i class="fas fa-phone"></i> 3133848472</p>
+              <p><i class="fas fa-envelope"></i> maquinasibague81@gmail.com</p>
+          </div>
+          
+          <div class="footer-section">
+              <h3>Síguenos</h3>
+              <div class="social-icons">
+                  <a href="https://facebook.com/maquinasibague"><i class="fab fa-facebook"></i></a>
+                  <a href="https://instagram.com/maquinasibague"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div>
+      </div>
+      
+      <div class="footer-bottom">
+          <p>&copy; 2025 Máquinas Ibagué. Todos los derechos reservados.</p>
+      </div>
+  </footer>
 </body>
 </html>

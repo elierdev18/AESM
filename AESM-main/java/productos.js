@@ -1,132 +1,179 @@
-// Datos de ejemplo
-const products = [
-    { id: 1, title: "Plana electronica Kingter", description: "La Plana Electrónica Kingter KT D7 es una máquina de coser industrial de puntada recta diseñada para maximizar la eficiencia en procesos de confección.", image: "https://maquinasdeconfeccion.com/producto/maquina-plana-mecatronica-con-cortahilo-kingter-kt-d7-t/", category: "Maquina", price: 200, brand: "marcaA" },
-    { id: 2, title: "Fileteadora electronica kingter", description: "La fileteadora electrónica Kingter es una máquina industrial de overlock (fileteado) diseñada para unir y rematar bordes de tejido con alta productividad y acabado profesional.", image: "https://via.placeholder.com/300x200", category: "Maquina", price: 50, brand: "marcaB" },
-    { id: 3, title: "Collarin electronica kingter", description: "La Collarín Mecatrónica Kingter KT‑500‑DDi es una recubridora de puntada cadeneta tipo collarín con recubridor superior, diseñada para la confección de prendas de punto ligeras y medianas (ropa interior, pijamas, camisetas, leggins, etc.)", image: "https://via.placeholder.com/300x200", category: "Maquina", price: 150, brand: "marcaC" },
-    { id: 4, title: "Plana electronica Jontex", description: "La Plana Electrónica Jontex es una máquina de pespunte computarizada de nueva generación, diseñada para ofrecer precisión y eficiencia en la confección de todo tipo de tejidos.", image: "https://via.placeholder.com/300x200", category: "Maquina", price: 300, brand: "marcaA" },
-    { id: 5, title: "Fileteadora electronica Jontex", description: "La Fileteadora Electrónica Jontex es una máquina mecatrónica de overlock (fileteado) pensada para producción de telas medianas y ligeras, que combina alta velocidad, eficiencia energética y acabados profesionales.", image: "https://via.placeholder.com/300x200", category: "Maquina", price: 80, brand: "marcaB" },
-    { id: 6, title: "Collarin electronica Jontex", description: "La Recubridora/Collarín Mecatrónica Jontex es una máquina de coser industrial especializada en puntada cadeneta tipo collarín y recubridor superior, ideal para bajos de prendas y acabados elásticos de alta calidad.", image: "https://via.placeholder.com/300x200", category: "Maquina", price: 120, brand: "marcaC" },
-    { id: 7, title: "Plana electronica Jinthex", description: "La Plana Electrónica Jinthex es una máquina de pespunte de cama plana, de una sola aguja, diseñada para ofrecer un alto rendimiento en la confección de telas ligeras a medianas. ", image: "https://via.placeholder.com/300x200", category: "Maquina", price: 400, brand: "marcaA" },
-    { id: 8, title: "Fileteadora electronica Jinthex", description: "La Fileteadora Mecatrónica Jinthex JN798 es una máquina overlock de 4 hilos con puntada de refuerzo, ideal para tejidos medianos y ligeros. Incorpora un sistema direct drive de alta velocidad que elimina correas y poleas, reduciendo ruido y vibraciones, y un motor ahorrador de 550 W.", image: "https://via.placeholder.com/300x200", category: "Maquina", price: 60, brand: "marcaB" },
-    { id: 9, title: "Collarin electronica Jinthex", description: "La Recubridora/Collarín Mecatrónica JINTHEX JN‑500D (también conocida como JN‑500‑02D) es una máquina especializada en puntada cadeneta tipo collarín y recubridor superior, ideal para bajos de prendas y acabados elásticos de alta calidad. ", image: "https://via.placeholder.com/300x200", category: "Maquina", price: 220, brand: "marcaC" }
-  ];
-  
-  // Variables de paginación y filtrado
-  let currentPage = 1;
-  const productsPerPage = 3;
-  let filteredProducts = products.slice();
-  
-  // Función para renderizar los productos en el grid
-  function renderProducts() {
-    const grid = document.getElementById('product-grid');
-    grid.innerHTML = '';
-    const start = (currentPage - 1) * productsPerPage;
-    const end = start + productsPerPage;
-    const productsToShow = filteredProducts.slice(start, end);
-  
-    productsToShow.forEach(product => {
-      const card = document.createElement('div');
-      card.className = 'product-card';
-      card.innerHTML = `
-        <img src="${product.image}" alt="${product.title}">
-        <h4>${product.title}</h4>
-        <p>${product.description}</p>
-        <p><strong>$${product.price}</strong></p>
-        <button onclick="alert('Detalles de ${product.title}')">Ver detalles</button>
-      `;
-      grid.appendChild(card);
-    });
-    renderPagination();
-  }
-  
-  // Función para renderizar la paginación
-  function renderPagination() {
-    const pagination = document.getElementById('pagination');
-    pagination.innerHTML = '';
-    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-  
-    // Botón "Anterior"
-    const prevLi = document.createElement('li');
-    const prevBtn = document.createElement('button');
-    prevBtn.textContent = 'Anterior';
-    prevBtn.disabled = currentPage === 1;
-    prevBtn.addEventListener('click', () => {
-      if (currentPage > 1) {
-        currentPage--;
-        renderProducts();
-      }
-    });
-    prevLi.appendChild(prevBtn);
-    pagination.appendChild(prevLi);
-  
-    // Botones de página
-    for (let i = 1; i <= totalPages; i++) {
-      const li = document.createElement('li');
-      const btn = document.createElement('button');
-      btn.textContent = i;
-      if (i === currentPage) {
-        btn.style.backgroundColor = 'gray';
-      }
-      btn.addEventListener('click', () => {
-        currentPage = i;
-        renderProducts();
-      });
-      li.appendChild(btn);
-      pagination.appendChild(li);
+$(document).ready(function(){
+
+	// AGREGANDO CLASE ACTIVE AL PRIMER ENLACE ====================
+	$('.category-list .category_Items[category="all"]').addClass('ct_item_active');
+
+	// FILTRANDO PRODUCTOS  ============================================
+
+	$('.category_Items').click(function(){
+		var catProduct = $(this).attr('category');
+		console.log(catProduct);
+
+		// AGREGANDO CLASE ACTIVE AL ENLACE SELECCIONADO
+		$('.category_Items').removeClass('ct_item_active');
+		$(this).addClass('ct_item_active');
+
+		// OCULTANDO PRODUCTOS =========================
+		$('.product-item').hide();
+
+		// MOSTRANDO PRODUCTOS =========================
+			$('.product-item[category="'+catProduct+'"]').show();
+	});
+
+  $('.product-item[category="all"]').click(function(){
+    $('product-item').show();
+  });
+});  
+
+
+	// MOSTRANDO TODOS LOS PRODUCTOS ======================
+
+
+  $(document).ready(function(){
+    const productsPerPage = 6; // Productos por página
+    let currentPage = 1;
+    let totalPages = 1;
+    let currentCategory = 'all';
+
+    // Función principal para filtrar y paginar
+    function filterAndPaginate(category) {
+        currentCategory = category;
+        
+        // Obtener productos visibles
+        let visibleProducts = (category === 'all') 
+            ? $('.product-item') 
+            : $(`.product-item[category="${category}"]`);
+        
+        // Calcular paginación
+        totalPages = Math.ceil(visibleProducts.length / productsPerPage);
+        
+        // Mostrar productos para la página actual
+        showPage(currentPage, visibleProducts);
+        
+        // Generar controles de paginación
+        generatePagination();
     }
-  
-    // Botón "Siguiente"
-    const nextLi = document.createElement('li');
-    const nextBtn = document.createElement('button');
-    nextBtn.textContent = 'Siguiente';
-    nextBtn.disabled = currentPage === totalPages;
-    nextBtn.addEventListener('click', () => {
-      if (currentPage < totalPages) {
-        currentPage++;
-        renderProducts();
+
+    function showPage(page, products) {
+        currentPage = page;
+        const start = (page - 1) * productsPerPage;
+        const end = start + productsPerPage;
+        
+        // Ocultar todos los productos primero
+        $('.product-item').hide();
+        
+        // Mostrar solo los productos del rango actual
+        products.slice(start, end).show();
+    }
+
+    function generatePagination() {
+        const pagination = $('.pagination');
+        pagination.empty();
+
+        // Botones de página
+        for(let i = 1; i <= totalPages; i++) {
+            pagination.append(
+                `<a href="#" class="page-link ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</a>`
+            );
+        }
+
+        // Agregar botones anterior/siguiente si hay múltiples páginas
+        if(totalPages > 1) {
+            pagination.prepend(
+                `<a href="#" class="page-link prev" data-page="prev">&laquo; Anterior</a>`
+            );
+            pagination.append(
+                `<a href="#" class="page-link next" data-page="next">Siguiente &raquo;</a>`
+            );
+        }
+    }
+
+    // Eventos
+    $(document).on('click', '.category_Items', function(e) {
+        e.preventDefault();
+        $('.category_Items').removeClass('ct_item_active');
+        $(this).addClass('ct_item_active');
+        currentPage = 1;
+        filterAndPaginate($(this).attr('category'));
+    });
+
+    $(document).on('click', '.page-link', function(e) {
+        e.preventDefault();
+        const action = $(this).data('page');
+        
+        if(action === 'prev' && currentPage > 1) currentPage--;
+        else if(action === 'next' && currentPage < totalPages) currentPage++;
+        else if(typeof action === 'number') currentPage = action;
+        
+        filterAndPaginate(currentCategory);
+    });
+
+    // Inicializar con la categoría "Todos"
+    filterAndPaginate('all');
+});
+
+// Actualiza el JavaScript para el slider de rango
+$(document).ready(function(){
+  // ... variables existentes ...
+  let currentMinPrice = 0;
+  let currentMaxPrice = 1000;
+
+  // Obtener precios máximos y mínimos reales de los productos
+  function getPriceLimits() {
+      let prices = [];
+      $('.product-item').each(function() {
+          const priceText = $(this).find('h1').text();
+          prices.push(parseFloat(priceText.replace(/[^0-9.]/g, '')));
+      });
+      return {
+          min: Math.min(...prices),
+          max: Math.max(...prices)
       }
-    });
-    nextLi.appendChild(nextBtn);
-    pagination.appendChild(nextLi);
   }
+
+  // Inicializar sliders con valores reales
+  const priceLimits = getPriceLimits();
+  $('#minPrice').attr({'min': priceLimits.min, 'max': priceLimits.max, 'value': priceLimits.min});
+  $('#maxPrice').attr({'min': priceLimits.min, 'max': priceLimits.max, 'value': priceLimits.max});
   
-  // Función para aplicar filtros
-  function applyFilters() {
-    const activeCategoryElem = document.querySelector('.sidebar ul li a.active');
-    const selectedCategory = activeCategoryElem ? activeCategoryElem.getAttribute('data-category') : 'todos';
-    const priceValue = document.getElementById('price-range').value;
-    const selectedBrand = document.getElementById('brand-select').value;
-  
-    filteredProducts = products.filter(product => {
-      const categoryMatch = (selectedCategory === 'todos') || (product.category === selectedCategory);
-      const priceMatch = product.price <= priceValue;
-      const brandMatch = (selectedBrand === 'todos') || (product.brand === selectedBrand);
-      return categoryMatch && priceMatch && brandMatch;
-    });
-    currentPage = 1;
-    renderProducts();
+  // Actualizar valores visuales
+  function updatePriceValues() {
+      $('#minValue').text(`$${currentMinPrice}`);
+      $('#maxValue').text(`$${currentMaxPrice}`);
   }
-  
-  // Eventos para los filtros
-  document.getElementById('apply-filters').addEventListener('click', (e) => {
-    e.preventDefault();
-    applyFilters();
+
+  // Eventos para los sliders
+  $('.price-slider').on('input', function() {
+      let minVal = parseInt($('#minPrice').val());
+      let maxVal = parseInt($('#maxPrice').val());
+      
+      // Evitar que los sliders se crucen
+      if(minVal > maxVal) {
+          [minVal, maxVal] = [maxVal, minVal];
+          $('#minPrice').val(minVal);
+          $('#maxPrice').val(maxVal);
+      }
+      
+      currentMinPrice = minVal;
+      currentMaxPrice = maxVal;
+      
+      updatePriceValues();
+      filterAndPaginate(currentCategory);
   });
+
+  // Actualizar función de filtrado
+  function filterByPrice(products) {
+      return products.filter(function() {
+          const priceText = $(this).find('h1').text();
+          const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
+          return price >= currentMinPrice && price <= currentMaxPrice;
+      });
+  }
+
+  // Inicializar valores
+  currentMinPrice = priceLimits.min;
+  currentMaxPrice = priceLimits.max;
+  updatePriceValues();
   
-  document.getElementById('price-range').addEventListener('input', (e) => {
-    document.getElementById('price-value').textContent = e.target.value;
-  });
-  
-  // Eventos para las categorías
-  const categoryLinks = document.querySelectorAll('.sidebar ul li a');
-  categoryLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      categoryLinks.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-      applyFilters();
-    });
-  });
-  
-  // Inicializar la visualización de productos
-  renderProducts();
+  // ... resto del código existente ...
+});
