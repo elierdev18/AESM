@@ -38,35 +38,41 @@ body{
   font-weight: 700;
 }
 
-.navbar ul {
+nav ul {
   display: flex;
   list-style: none;
 }
 
-.navbar li {
-  margin-left: 2rem;
+nav ul li {
+  margin-left: 25px;
 }
 
-.navbar a {
-  color: var(--color-gray);
+nav ul li a {
+  text-decoration: none;
+  color: var(--color-gray-dark);
   font-weight: 500;
-  transition: color 0.3s;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
   position: relative;
-  padding-bottom: 5px;
 }
 
-.navbar a:hover, .navbar a.active {
+nav ul li a:hover {
   color: var(--color-salmon);
 }
 
-.navbar a.active::after {
+nav ul li a::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  width: 0;
   height: 2px;
+  bottom: -5px;
+  left: 0;
   background-color: var(--color-salmon);
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
 }
 
 .wrap{
@@ -208,7 +214,7 @@ body{
 }
 
 .price-slider {
-  -webkit-appearance: none;
+  webkit-appearance: none;
   width: 100%;
   height: 4px;
   background: #ddd;
@@ -244,9 +250,6 @@ body{
   font-weight: bold;
 }
 
-#minPrice {
-  /* No necesitamos estilos especiales aquí */
-}
 
 footer {
   background-color: var(--color-gray-dark);
