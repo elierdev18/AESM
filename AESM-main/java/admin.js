@@ -1,20 +1,4 @@
-// admin.js
-
-// --- Datos (Idealmente, esto vendría de un backend) ---
-// Copiamos los datos iniciales de productos.js para simulación
-// En una aplicación real, NO deberías tener los datos duplicados aquí.
-let products = [
-    { id: 1, title: "Plana electronica Kingter", description: "La Plana Electrónica Kingter KT D7 es una máquina...", image: "https://maquinasdeconfeccion.com/producto/maquina-plana-mecatronica-con-cortahilo-kingter-kt-d7-t/", category: "Maquina", price: 2500000, brand: "marcaA" }, // Ajusta precios si es necesario
-    { id: 2, title: "Fileteadora electronica kingter", description: "La fileteadora electrónica Kingter es una máquina...", image: "...", category: "Maquina", price: 3200000, brand: "marcaB" },
-    { id: 3, title: "Collarin electronica kingter", description: "La Collarín Mecatrónica Kingter KT‑500‑DDi es una recubridora...", image: "...", category: "Maquina", price: 3800000, brand: "marcaC" },
-    // Añade el resto de productos de productos.js si quieres empezar con ellos
-    // ... (Asegúrate de que los precios coincidan con lo que quieres mostrar/usar)
-];
-// Función para generar un ID simple (para simulación)
-function generateId() {
-    return Date.now() + Math.floor(Math.random() * 1000);
-}
-
+"use strict";
 
 // --- Referencias a Elementos del DOM ---
 const addProductForm = document.getElementById('add-product-form');
@@ -23,123 +7,179 @@ const productPriceInput = document.getElementById('product-price');
 const productDescriptionInput = document.getElementById('product-description');
 const productImageInput = document.getElementById('product-image');
 const productBrandInput = document.getElementById('product-brand');
-const productCategoryInput = document.getElementById('product-category'); // Aunque sea readonly
+const productCategoryInput = document.getElementById('product-category');
 const productListContainer = document.getElementById('product-list-container');
 
+let listaDeProductos = []; // Array global para almacenar los productos
 
-// --- Funciones ---
+// --- Función para obtener los productos desde el servidor ---
+async function obtenerProductos() {
+    try {
+        const response = await fetch("../php/obtener_productos.php");
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => null);
+            throw new Error(`Error HTTP ${response.status}: ${errorData?.error || response.statusText}`);
+        }
+        const products = await response.json();
+        if (Array.isArray(products)) {
+            listaDeProductos = products;
+        } else if (products.error) {
+            throw new Error(products.error);
+        } else {
+            throw new Error("Respuesta inesperada del servidor.");
+        }
+    } catch (error) {
+        console.error("Error al obtener productos:", error);
+        if (productListContainer) {
+            productListContainer.innerHTML = `<p class="error" style="color:red;">Error al cargar productos: ${error.message}</p>`;
+        }
+        listaDeProductos = [];
+    }
+}
 
-/**
- * Muestra los productos en la sección de gestión.
- */
-function displayAdminProducts() {
-    if (!productListContainer) return; // Seguridad por si el elemento no existe
-
-    productListContainer.innerHTML = ''; // Limpia la lista actual
-
-    if (products.length === 0) {
-        productListContainer.innerHTML = '<p>No hay productos para mostrar.</p>';
+// --- Función para mostrar los productos en la sección de administración ---
+function mostrarProductosAdmin() {
+    if (!productListContainer) {
+        console.error("Contenedor de lista de productos no encontrado.");
         return;
     }
-
-    products.forEach(product => {
-        const productElement = document.createElement('div');
-        productElement.classList.add('product-item');
-        productElement.innerHTML = `
+    productListContainer.innerHTML = "";
+    if (listaDeProductos.length === 0) {
+        productListContainer.innerHTML = "<p>No hay productos para mostrar.</p>";
+        return;
+    }
+    listaDeProductos.forEach(producto => {
+        const elementoProducto = document.createElement("div");
+        elementoProducto.classList.add("product-item");
+        const precioFormateado = (typeof producto.precio === "number" || !isNaN(parseFloat(producto.precio)))
+            ? parseFloat(producto.precio).toLocaleString('es-CO')
+            : "Precio inválido";
+        // Se añade el botón de eliminar
+        elementoProducto.innerHTML = `
             <div class="product-item-info">
-                <span class="name">${product.title}</span>
-                <span class="price">COP ${product.price.toLocaleString('es-CO')}</span>
-                <span class="brand">(${product.brand})</span>
+                <span class="name">${producto.nombre || "Nombre no disponible"}</span>
+                <span class="price">COP ${precioFormateado}</span>
+                <span class="brand">(${producto.nombre_marca || "Marca no disponible"})</span>
             </div>
             <div class="product-item-actions">
-                <button class="btn btn-delete" data-id="${product.id}">Eliminar</button>
+                <button class="btn btn-delete" data-id="${producto.producto_id}">Eliminar</button>
             </div>
         `;
-        productListContainer.appendChild(productElement);
+        productListContainer.appendChild(elementoProducto);
     });
 }
 
-/**
- * Maneja el envío del formulario para añadir un nuevo producto.
- * @param {Event} event - El evento de envío del formulario.
- */
-function handleAddProduct(event) {
-    event.preventDefault(); // Evita que la página se recargue
+// --- Función para manejar el envío del formulario y agregar un nuevo producto ---
+async function manejarAgregarProducto(event) {
+    event.preventDefault();
 
-    // Obtener valores del formulario
-    const name = productNameInput.value.trim();
-    const price = parseFloat(productPriceInput.value);
-    const description = productDescriptionInput.value.trim();
-    const image = productImageInput.value.trim(); // Puede estar vacío
-    const brand = productBrandInput.value;
-    const category = productCategoryInput.value; // Aunque sea readonly
+    // Recopilar los datos del formulario
+    const nombre = productNameInput.value.trim();
+    const precio = parseFloat(productPriceInput.value);
+    const descripcion = productDescriptionInput.value.trim();
+    const url_imagen = productImageInput.value.trim();
+    const marca_id = productBrandInput.value;
+    const categoria_nombre = productCategoryInput.value.trim();
 
-    // Validación simple (puedes añadir más)
-    if (!name || isNaN(price) || price <= 0 || !description || !brand) {
-        alert('Por favor, complete todos los campos requeridos correctamente.');
+    // Validación básica
+    if (!nombre || isNaN(precio) || precio <= 0 || !descripcion || !marca_id || !categoria_nombre) {
+        alert("Por favor, complete todos los campos correctamente.");
         return;
     }
 
-    // Crear el nuevo objeto producto
-    const newProduct = {
-        id: generateId(), // Genera un ID único simple
-        title: name,
-        description: description,
-        image: image || '../img/placeholder.png', // URL por defecto si no se proporciona imagen
-        category: category,
-        price: price,
-        brand: brand
+    // Preparar el objeto con los datos del producto
+    const datosProducto = {
+        nombre: nombre,
+        precio: precio,
+        descripcion: descripcion,
+        url_imagen: url_imagen,
+        marca_id: parseInt(marca_id),
+        categoria_nombre: categoria_nombre
     };
 
-    // Añadir al array local (Simulación)
-    products.push(newProduct);
+    // Desactivar el botón para evitar envíos múltiples y dar feedback visual
+    const botonSubmit = addProductForm.querySelector('button[type="submit"]');
+    botonSubmit.disabled = true;
+    botonSubmit.textContent = "Añadiendo...";
 
-    // Limpiar el formulario
-    addProductForm.reset();
-
-    // Volver a mostrar la lista actualizada
-    displayAdminProducts();
-
-    alert('¡Producto añadido con éxito! (Recuerda: este cambio es solo local)');
-    console.log("Lista de productos actualizada:", products); // Para depuración
+    try {
+        const response = await fetch("../php/agregar_producto.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(datosProducto)
+        });
+        const resultado = await response.json();
+        console.log("Respuesta del servidor:", resultado);
+        if (!response.ok) {
+            throw new Error(resultado.error || `Error HTTP ${response.status}`);
+        }
+        if (resultado.success) {
+            alert(resultado.message || "¡Producto añadido con éxito!");
+            addProductForm.reset();
+            await obtenerProductos();
+            mostrarProductosAdmin();
+        } else {
+            throw new Error(resultado.error || "Error desconocido al añadir el producto");
+        }
+    } catch (error) {
+        console.error("Error al agregar producto:", error);
+        alert(`Error al agregar producto: ${error.message}`);
+    } finally {
+        botonSubmit.disabled = false;
+        botonSubmit.textContent = "Añadir Producto";
+    }
 }
 
-/**
- * Maneja el clic en los botones de la lista de productos (delegación de eventos).
- * @param {Event} event - El evento de clic.
- */
-function handleProductListClick(event) {
-    // Verificar si se hizo clic en un botón de eliminar
-    if (event.target.classList.contains('btn-delete')) {
-        const button = event.target;
-        const productId = parseInt(button.dataset.id); // Obtener el ID del atributo data-id
-
-        // Confirmación antes de eliminar
-        if (confirm(`¿Estás seguro de que quieres eliminar el producto con ID ${productId}?`)) {
-            // Filtrar el array para quitar el producto (Simulación)
-            products = products.filter(product => product.id !== productId);
-
-            // Volver a mostrar la lista actualizada
-            displayAdminProducts();
-
-            alert('¡Producto eliminado con éxito! (Recuerda: este cambio es solo local)');
-            console.log("Lista de productos actualizada:", products); // Para depuración
+// --- Función para manejar el clic en los botones de eliminación ---
+function manejarClicListaProductos(event) {
+    const botonEliminar = event.target.closest('.btn-delete[data-id]');
+    if (botonEliminar) {
+        const productoId = parseInt(botonEliminar.dataset.id);
+        if (confirm(`¿Estás seguro de eliminar el producto con ID ${productoId}?`)) {
+            eliminarProducto(productoId);
         }
     }
 }
 
-
-// --- Inicialización y Event Listeners ---
-
-// Mostrar productos iniciales al cargar la página
-document.addEventListener('DOMContentLoaded', displayAdminProducts);
-
-// Listener para el formulario de añadir producto
-if (addProductForm) {
-    addProductForm.addEventListener('submit', handleAddProduct);
+// --- Función para eliminar el producto en la base de datos ---
+async function eliminarProducto(producto_id) {
+    try {
+        const response = await fetch("../php/eliminar_producto.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ producto_id: producto_id })
+        });
+        const result = await response.json();
+        console.log("Respuesta de eliminación:", result);
+        if (!response.ok) {
+            throw new Error(result.error || `Error HTTP ${response.status}`);
+        }
+        if (result.success) {
+            alert(result.message || "Producto eliminado correctamente.");
+            await obtenerProductos();
+            mostrarProductosAdmin();
+        } else {
+            throw new Error(result.error || "Error desconocido al eliminar el producto.");
+        }
+    } catch (error) {
+        console.error("Error al eliminar producto:", error);
+        alert("Error al eliminar producto: " + error.message);
+    }
 }
 
-// Listener para clics en la lista de productos (para botones de eliminar)
-if (productListContainer) {
-    productListContainer.addEventListener('click', handleProductListClick);
-}
+// --- Inicialización y asignación de eventos ---
+document.addEventListener("DOMContentLoaded", async () => {
+    if (productListContainer) {
+        productListContainer.innerHTML = "<p>Cargando productos...</p>";
+        await obtenerProductos();
+        mostrarProductosAdmin();
+        productListContainer.addEventListener("click", manejarClicListaProductos);
+    } else {
+        console.error("El elemento #product-list-container no se encontró en el DOM.");
+    }
+    if (addProductForm) {
+        addProductForm.addEventListener("submit", manejarAgregarProducto);
+    } else {
+        console.error("Formulario para agregar producto no encontrado.");
+    }
+});
