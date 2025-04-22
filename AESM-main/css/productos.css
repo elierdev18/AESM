@@ -347,3 +347,49 @@ footer {
   background-color: #128C7E;
   transform: scale(1.1);
 }
+/* Contenedor general de cada producto */
+.product-item {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Parte de la imagen */
+.product-image {
+  flex-shrink: 0;
+  margin-right: 0%;
+}
+
+.product-image img {
+  max-width: 200px;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Información del producto */
+.product-info {
+  flex-grow: 1;
+}
+
+.product-name {
+  margin: 0 0 10px;
+  font-size: 1.5em;
+  color: #e67e22;
+}
+
+.product-description {
+  margin: 0 0 30px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.product-price {
+  font-weight: bold;
+  color: #e67e22;
+  font-size: 1.1em;
+}
